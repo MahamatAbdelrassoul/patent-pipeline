@@ -1,6 +1,9 @@
 __pycache__/
 *.py[cod]
 data/raw/
+data/clean_patents.csv
+data/clean_inventors.csv
+data/clean_relationships.csv
 patents.db
 .env
 venv/

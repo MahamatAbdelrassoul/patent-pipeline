@@ -1,5 +1,5 @@
 
-PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys = OFF;
 
 CREATE TABLE IF NOT EXISTS patents (
     patent_id    TEXT    PRIMARY KEY,
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS companies (
 
 CREATE TABLE IF NOT EXISTS relationships (
     id           INTEGER PRIMARY KEY AUTOINCREMENT,
-    patent_id    TEXT    REFERENCES patents(patent_id),
-    inventor_id  TEXT    REFERENCES inventors(inventor_id),
-    company_id   TEXT    REFERENCES companies(company_id)
+    patent_id    TEXT,
+    inventor_id  TEXT,
+    company_id   TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_rel_patent   ON relationships(patent_id);
