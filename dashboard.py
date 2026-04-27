@@ -76,7 +76,7 @@ st.markdown("""
     <span class="material-icons" style="font-size:40px; color:white;">lightbulb</span>
     <div>
         <h1>Global Patent Intelligence Dashboard</h1>
-        <p>3,000,000 real patents · 1976–2025 · Source: PatentsView / USPTO Open Data Portal</p>
+        <p>9,454,161 real patents · 1976–2025 · Source: PatentsView / USPTO Open Data Portal</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
