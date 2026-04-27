@@ -4,7 +4,7 @@ import pandas as pd
 RAW_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "raw")
 DB_PATH = os.path.join(os.path.dirname(__file__), "..", "patents.db")
 CHUNK_SIZE = 50000
-MAX_PATENTS = 3000000
+MAX_PATENTS = 9999999
 
 SCHEMA = """
 PRAGMA journal_mode=WAL;
