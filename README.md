@@ -1,46 +1,8 @@
 # Global Patent Intelligence Data Pipeline
 
-A complete data engineering pipeline that collects, cleans, stores, and analyzes
-3,000,000 real patent records from 1976 to 2025.
+A complete data engineering pipeline that collects, cleans, stores, and analyzes 9,454,161 real patent records from 1976 to 2025.
 
 **Data Source:** PatentsView / USPTO Open Data Portal
-
----
-
-## Project Structure
-
-patent-pipeline/
-├── scripts/
-│ ├── fetch_data.py ← Reads TSV files and builds database
-│ ├── clean_data.py ← Exports clean CSV files from database
-│ ├── load_db.py ← Verifies database integrity
-│ ├── generate_reports.py ← Runs all 7 SQL queries + reports
-│ ├── visualizations.py ← Generates 4 charts (PNG)
-│ └── category_analysis.py ← Advanced patent category analysis
-├── sql/
-│ ├── schema.sql ← Database schema
-│ └── queries.sql ← All 7 analytical SQL queries
-├── data/
-│ ├── sample_patents.csv ← Sample of clean patents (1000 rows)
-│ ├── sample_inventors.csv ← Sample of clean inventors (1000 rows)
-│ ├── sample_companies.csv ← Sample of clean companies (1000 rows)
-│ └── clean_companies.csv ← Full clean companies table
-├── reports/
-│ ├── top_inventors.csv
-│ ├── top_companies.csv
-│ ├── country_trends.csv
-│ ├── yearly_trends.csv
-│ ├── top_categories.csv
-│ ├── report.json
-│ ├── chart_yearly_trends.png
-│ ├── chart_top_countries.png
-│ ├── chart_top_companies.png
-│ ├── chart_top_inventors.png
-│ ├── chart_top_categories.png
-│ ├── chart_category_trends.png
-│ └── chart_companies_in_top_category.png
-├── dashboard.py ← Streamlit interactive dashboard
-└── README.md
 
 ---
 
@@ -48,23 +10,18 @@ patent-pipeline/
 
 ### 1. Clone the repository
 
-```bash
-git clone https://github.com/MahamatAbdelrassoul/patent-pipeline.git
-cd patent-pipeline
-```
+    git clone https://github.com/MahamatAbdelrassoul/patent-pipeline.git
+    cd patent-pipeline
 
 ### 2. Install dependencies
 
-```bash
-pip install requests pandas matplotlib streamlit
-```
+    pip install requests pandas matplotlib streamlit
 
 ### 3. Download the data files
 
-Go to:
-https://data.uspto.gov/bulkdata/datasets/pvgpatdis?fileDataFromDate=1976-01-01&fileDataToDate=2025-09-30
+Go to: https://data.uspto.gov/bulkdata/datasets/pvgpatdis?fileDataFromDate=1976-01-01&fileDataToDate=2025-09-30
 
-Download and unzip these 6 files into data/raw/:
+Download and unzip these 6 files into data/raw/
 
 - g_patent.tsv
 - g_patent_abstract.tsv
@@ -75,45 +32,80 @@ Download and unzip these 6 files into data/raw/:
 
 ### 4. Run the pipeline
 
-```bash
-python scripts/fetch_data.py
-python scripts/clean_data.py
-python scripts/load_db.py
-python scripts/generate_reports.py
-python scripts/visualizations.py
-python scripts/category_analysis.py
-```
+    python scripts/fetch_data.py
+    python scripts/clean_data.py
+    python scripts/load_db.py
+    python scripts/generate_reports.py
+    python scripts/visualizations.py
+    python scripts/category_analysis.py
 
 ### 5. Launch the dashboard
 
-```bash
-streamlit run dashboard.py
-```
+    streamlit run dashboard.py
+
+---
+
+## Code Files
+
+- scripts/fetch_data.py — Reads TSV files and builds database
+- scripts/clean_data.py — Exports clean CSV files from database
+- scripts/load_db.py — Verifies database integrity
+- scripts/generate_reports.py — Runs all 7 SQL queries and reports
+- scripts/visualizations.py — Generates 4 charts PNG
+- scripts/category_analysis.py — Advanced patent category analysis
+- sql/schema.sql — Database schema
+- sql/queries.sql — All 7 analytical SQL queries
+- dashboard.py — Streamlit interactive dashboard
+
+---
+
+## Clean Data Files
+
+- data/sample_patents.csv — Sample of clean patents 1000 rows
+- data/sample_inventors.csv — Sample of clean inventors 1000 rows
+- data/sample_companies.csv — Sample of clean companies 1000 rows
+- data/clean_companies.csv — Full clean companies table
+
+---
+
+## Report Files
+
+- reports/top_inventors.csv
+- reports/top_companies.csv
+- reports/country_trends.csv
+- reports/yearly_trends.csv
+- reports/top_categories.csv
+- reports/report.json
+- reports/chart_yearly_trends.png
+- reports/chart_top_countries.png
+- reports/chart_top_companies.png
+- reports/chart_top_inventors.png
+- reports/chart_top_categories.png
+- reports/chart_category_trends.png
+- reports/chart_companies_in_top_category.png
 
 ---
 
 ## Database Schema
 
-```sql
-patents       (patent_id, title, abstract, filing_date, year)
-inventors     (inventor_id, name, country)
-companies     (company_id, name)
-relationships (id, patent_id, inventor_id, company_id)
-```
+- patents — patent_id, title, abstract, filing_date, year
+- inventors — inventor_id, name, country
+- companies — company_id, name
+- relationships — id, patent_id, inventor_id, company_id
 
 ---
 
-## SQL Queries (Q1-Q7)
+## SQL Queries Q1 to Q7
 
-| #   | Query         | Description                             |
-| --- | ------------- | --------------------------------------- |
-| Q1  | Top Inventors | Most patents by a single inventor       |
-| Q2  | Top Companies | Companies with most patents             |
-| Q3  | Countries     | Countries ranked by patent output       |
-| Q4  | Yearly Trends | Patent count per year 1976-2025         |
-| Q5  | JOIN          | Patents with inventors and companies    |
-| Q6  | CTE           | Multi-step analysis with WITH clause    |
-| Q7  | Window        | Inventor rankings using RANK(), NTILE() |
+| #   | Query         | Description                            |
+| --- | ------------- | -------------------------------------- |
+| Q1  | Top Inventors | Most patents by a single inventor      |
+| Q2  | Top Companies | Companies with most patents            |
+| Q3  | Countries     | Countries ranked by patent output      |
+| Q4  | Yearly Trends | Patent count per year 1976-2025        |
+| Q5  | JOIN          | Patents with inventors and companies   |
+| Q6  | CTE           | Multi-step analysis with WITH clause   |
+| Q7  | Window        | Inventor rankings using RANK and NTILE |
 
 All queries are in sql/queries.sql
 
@@ -121,32 +113,30 @@ All queries are in sql/queries.sql
 
 ## Results Summary
 
-| Metric        | Value                            |
-| ------------- | -------------------------------- |
-| Total Patents | 3,000,000                        |
-| Years Covered | 1976-2025                        |
-| Inventors     | 2,139,024                        |
-| Companies     | 229,467                          |
-| Top Country   | United States (53.09%)           |
-| Top Company   | Samsung Display (71,148 patents) |
-| Top Inventor  | Tao Luo (4,081 patents)          |
-| Top Category  | Chemistry of Carbon Compounds    |
+| Metric        | Value                             |
+| ------------- | --------------------------------- |
+| Total Patents | 9,454,161                         |
+| Years Covered | 1976-2025                         |
+| Inventors     | 4,294,034                         |
+| Companies     | 572,495                           |
+| Relationships | 25,305,316                        |
+| Top Country   | United States 54.38%              |
+| Top Company   | Samsung Display 174,536 patents   |
+| Top Inventor  | Shunpei Yamazaki 6,787 patents    |
+| Top Category  | Active Solid-State Devices 51,607 |
 
 ---
 
 ## Note on Dataset Size
 
-The full PatentsView dataset contains 9,454,161 patents across 11 GB of raw TSV files.
-This pipeline loaded 3,000,000 patents (31.7%) due to local disk space constraints.
-The pipeline is fully designed to process the complete dataset on a machine with sufficient storage.
-Full clean CSV files are generated by running python scripts/clean_data.py.
+The full PatentsView dataset contains 9,454,161 patents across 11 GB of raw TSV files. This pipeline successfully loaded the COMPLETE dataset — all 9,454,161 patents from 1976 to 2025. Full clean CSV files are generated by running python scripts/clean_data.py.
 
 ---
 
 ## Extra Features
 
-- 7 data visualizations (PNG charts)
+- 7 data visualizations PNG charts
 - Interactive Streamlit dashboard with Google Material Design
 - Patent keyword search
-- Advanced patent category analysis (USPC classification)
+- Advanced patent category analysis USPC classification
 - Interactive category explorer
