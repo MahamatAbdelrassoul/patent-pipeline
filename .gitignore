@@ -5,3 +5,5 @@ data/clean_relationships.csv
 patents.db
 .env
 venv/
+patents.db-shm
+patents.db-wal
