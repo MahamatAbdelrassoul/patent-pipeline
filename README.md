@@ -11,31 +11,31 @@ A complete, professional-grade data engineering pipeline that collects, cleans, 
 
 ### KPI Overview
 
-![Dashboard KPI](screenshots/1.png)
+![Dashboard KPI](screenshots/dashboard/1.png)
 
 ### Patent Grants Per Year (1976-2025)
 
-![Yearly Trends](screenshots/2.png)
+![Yearly Trends](screenshots/dashboard/2.png)
 
 ### Top Countries and Companies
 
-![Countries and Companies](screenshots/3.png)
+![Countries and Companies](screenshots/dashboard/3.png)
 
 ### Top 20 Inventors
 
-![Top Inventors](screenshots/4.png)
+![Top Inventors](screenshots/dashboard/4.png)
 
 ### Advanced Category Analysis
 
-![Category Analysis](screenshots/5a.png)
+![Category Analysis](screenshots/dashboard/5a.png)
 
 ### Top 5 Categories Over Time
 
-![Category Trends](screenshots/5b.png)
+![Category Trends](screenshots/dashboard/5b.png)
 
 ### Patent Search Feature
 
-![Search Patents](screenshots/6.png)
+![Search Patents](screenshots/dashboard/6.png)
 
 ---
 
